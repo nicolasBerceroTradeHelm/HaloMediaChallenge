@@ -17,6 +17,11 @@ class pageActions {
     await buttonLocator.click();
   }
 
+  async clickByRole(role, name) {
+    const buttonLocator = locators.getByRole(this.page, role, name);
+    await buttonLocator.click();
+  }
+
   async validateText(expectedTest) {
     await expect(locators.headingByName(this.page, expectedTest)).toBeVisible();
     // I would use a switch statement here dependeing on the expectedTest value on a day to day scenario
@@ -39,8 +44,14 @@ class pageActions {
   }
 
   async validateUrl(expectedUrl) {
+  if (expectedUrl.startsWith('http')) {
     await expect(this.page).toHaveURL(expectedUrl);
+  } else {
+    const urlRegex = new RegExp(`${expectedUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`);
+    await expect(this.page).toHaveURL(urlRegex);
   }
+}
+
 
 }
 

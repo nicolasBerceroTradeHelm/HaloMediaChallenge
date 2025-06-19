@@ -1,48 +1,46 @@
-# 📘 Part 1 – PlaywrightTestKopius  
-**Playwright Challenge**
+# 📘 PlaywrightTest Challenge
 
-This project is an automated test suite built with [Playwright](https://playwright.dev/) for validating core functionality of the Playwright documentation website. 
+## Project Overview
 
-**Author**  
-- Nicolas Bercero
+This project is an automated test suite built with [Playwright](https://playwright.dev/) and [Cucumber](https://cucumber.io/) to validate core functionality of the Playwright documentation website. The framework is written in **JavaScript**, using a modular Page Object Model (POM) structure to ensure maintainability and scalability.
 
----
-
-This Playwright test project automates the functional validation of the Playwright documentation site.  
-It uses a modular Page Object Model (POM) structure to promote code reusability and maintainability.
-
-The `pageActions` class encapsulates user interactions such as:
-- Navigating to the homepage
-- Clicking buttons
-- Interacting with the search bar
-- Verifying text on the page
-- Validating the resulting URL
-
-Each interaction is abstracted behind descriptive methods, making the test flow clean and readable.
+The `pageActions` class abstracts user interactions (navigation, clicking, searching, validation), making the test scenarios clean and readable.
 
 ---
 
-The actual test, **Search browserContext and validate URL**, mimics a realistic user scenario:
-- The user navigates to the Docs section
-- Verifies the landing page
-- Searches for `browserContext` using the site's built-in search feature
-- Clicks on the first result
-- Confirms the URL change corresponds to the **BrowserContext** class documentation
+## Why Playwright + Cucumber?
 
-Utility locators in `pageObjects.js` abstract selectors by role, class, and text, enabling dynamic element resolution without hardcoding complex selectors.  
-This structure supports scalable, readable, and maintainable automated testing.
+- **Playwright** was chosen for its fast, reliable browser automation with native support for multiple browsers and modern features like auto-waiting.
+- **Cucumber** adds BDD-style human-readable feature files, improving collaboration between technical and non-technical stakeholders.
+- This combination balances robust automation capabilities with clear, business-focused test scenarios.
+
+---
+
+## Automated Scenarios
+
+The repo currently automates two key user scenarios on the Playwright docs site:
+
+1. **Search `browserContext` and validate URL**  
+   _Reasoning:_ Validates critical search functionality and navigation to API documentation — essential for users exploring Playwright’s core API.
+
+2. **Open a new window from the Community tab and validate contents**  
+   _Reasoning:_ Verifies UI behavior involving multiple windows/tabs, a common real-world scenario, ensuring robust multi-page support.
+
+These scenarios were selected because they cover both typical navigation flows and slightly more complex interactions like new window handling.
 
 ---
 
 ## 📁 Project Structure
 
 ```text
-.
 ├── pages/
-│   ├── pageActions.page.js       # Encapsulates user interactions (POM)
-│   └── pageObjects.js            # Reusable dynamic locator utilities
-├── tests/
-│   └── playwright-docs.spec.js   # Functional test cases
+│ ├── pageActions.page.js # User actions (POM)
+│ └── pageObjects.js # Reusable selectors and locators
+├── steps/
+│ └── stepDefinitions.js # Cucumber step implementations
+├── features/
+│ └── playwrightTest.feature # Gherkin feature files describing scenarios
+├── generate-report.js # Script to generate HTML report from cucumber JSON
 ├── package.json
 └── README.md
 ```
@@ -57,86 +55,9 @@ This structure supports scalable, readable, and maintainable automated testing.
 npm install
 ```
 
-### 2. Run the Test
+### 2. Run the Cucumber tests and generate report
 
 ```bash
-npx playwright test
+npm run test:cucumber
 ```
-
-> 💡 Tip: To run in headed mode:
-```bash
-npx playwright test --headed
-```
-
----
-
-# 📝 Part 2 – Functional Test Case
-
-### **User Story**
-
-> As a user, I want to edit my phone number in the profile section so I can keep my contact information up to date.
-
----
-
-### **Acceptance Criteria**
-- The "Phone" field shows the current phone number.
-- The **Save** button is only enabled if the field was modified with a valid value.
-- The phone number must be validated (10 numeric digits).
-- A confirmation message appears after saving.
-- If there's a network error, a clear error message must be displayed.
-
----
-
-### ✅ Test Case: Edit Phone Number with Valid Input and Handle Network Failure
-
-#### **Test Data**
-- Figma Mockups  
-- Valid Phone Numbers  
-- Valid User  
-
-#### **Preconditions**
-- User is logged in (Valid Login)
-- User navigates to the Profile section
-- The Phone field is visible and displays the current phone number
-
-#### **Test Steps**
-
-```text
-1. Validate that the Phone field shows a valid number and Save is disabled
-2. Clear the Phone field
-3. Enter a new valid 10-digit phone number 
-4. Confirm that Save becomes enabled
-5. Click Save
-6. Validate that a confirmation message is displayed
-```
-
-#### **Expected Result**
-
-- Save button activates only after valid input
-- If a network error occurs during save:
-  - An error message appears
-  - No change is saved
-
----
-
-###  Simulating a Network Error 
-
-You can simulate an error using the following methods:
-
-- **DevTools**: Block the save request manually in the Network tab
-- **Requestly or similar tool**: Force a 500 response
-- **Backend override**: Temporarily return a 500 error
-- **Quick method**: Disable your network or Wi-Fi before clicking Save
-
----
-
-### 🧪 How to Validate the Error Message
-
-```text
-1. Confirm that the UI displays an error message appropriately
-2. Verify the message content and styling follows design/UX specs
-3. Ensure the page does not crash or reload unexpectedly
-4. Check the console for proper error logging (no unhandled exceptions)
-```
-
----
+💡 Tip: This command runs Cucumber tests, generates a JSON report, and creates an HTML report that opens automatically.

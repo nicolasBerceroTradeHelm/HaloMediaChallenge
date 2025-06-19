@@ -1,0 +1,197 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "playwright-homepage-tests;search-browsercontext-and-validate-url",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Search browserContext and validate URL",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 445084899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 4,
+            "name": "I click the Docs button",
+            "match": {
+              "location": "steps\\stepDefinitions.js:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 58788300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 5,
+            "name": "I should see the text Installation",
+            "match": {
+              "location": "steps\\stepDefinitions.js:25"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 113251599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "I search for \"browserContext\"",
+            "match": {
+              "location": "steps\\stepDefinitions.js:29"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2174331499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "I click the first search result for \"browserContext\"",
+            "match": {
+              "location": "steps\\stepDefinitions.js:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 192456000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "the URL should contain \"class-browsercontext\"",
+            "match": {
+              "location": "steps\\stepDefinitions.js:37"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7807899
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 28402100
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "playwright-homepage-tests;new-window-opens-from-community-tab",
+        "keyword": "Scenario",
+        "line": 10,
+        "name": "New window opens from Community tab",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 436734999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 11,
+            "name": "I click the Community link",
+            "match": {
+              "location": "steps\\stepDefinitions.js:41"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 40973499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 12,
+            "name": "I should see the Welcome text",
+            "match": {
+              "location": "steps\\stepDefinitions.js:45"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 109704299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "I click the Learn Playwright button and a new window opens",
+            "match": {
+              "location": "steps\\stepDefinitions.js:49"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1058180999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "the new window should contain URL matching \"build-with-playwright\"",
+            "match": {
+              "location": "steps\\stepDefinitions.js:58"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 36072899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "the new window should contain a heading with \"Playwright\"",
+            "match": {
+              "location": "steps\\stepDefinitions.js:62"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3041500
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 28988200
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "playwright-homepage-tests",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Playwright Homepage Tests",
+    "tags": [],
+    "uri": "features\\playwrightTest.feature"
+  }
+]
